@@ -8,21 +8,21 @@ class TrimSliderStyle {
   const TrimSliderStyle({
     this.background = Colors.black54,
     this.positionLineColor = Colors.white,
-    this.positionLineWidth = 4,
+    this.positionLineWidth = 2,
     this.lineColor = Colors.white60,
     this.onTrimmingColor = kDefaultSelectedColor,
     this.onTrimmedColor = kDefaultSelectedColor,
-    this.lineWidth = 2,
+    this.lineWidth = 1,
     this.borderRadius = 5.0,
     // edges
     this.edgesType = TrimSliderEdgesType.bar,
     double? edgesSize,
     // icons
-    this.iconColor = Colors.black,
+    this.iconColor = Colors.white,
     this.iconSize = 16,
     this.leftIcon = Icons.arrow_back_ios_rounded,
     this.rightIcon = Icons.arrow_forward_ios_rounded,
-  }) : edgesSize = edgesSize ?? (edgesType == TrimSliderEdgesType.bar ? 10 : 8);
+  }) : edgesSize = edgesSize ?? (edgesType == TrimSliderEdgesType.bar ? 1 : 8);
 
   /// The [background] param specifies the color of the paint area outside the trimmed area
   ///

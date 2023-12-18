@@ -148,7 +148,7 @@ class TrimSliderPainter extends CustomPainter {
         );
     }
 
-    final borderRadius = Radius.circular(style.borderRadius);
+    // final borderRadius = Radius.circular(style.borderRadius);
 
     /// Return left and right edges, with a reversed border radius on the inside of the rect
     return Path()
@@ -165,8 +165,8 @@ class TrimSliderPainter extends CustomPainter {
                   style.edgeWidth + style.borderRadius,
                   size.height + style.lineWidth * 2,
                 ),
-                topLeft: borderRadius,
-                bottomLeft: borderRadius,
+                // topLeft: borderRadius,
+                // bottomLeft: borderRadius,
               ),
             ),
           Path()
@@ -178,8 +178,8 @@ class TrimSliderPainter extends CustomPainter {
                   style.borderRadius,
                   size.height,
                 ),
-                topLeft: borderRadius,
-                bottomLeft: borderRadius,
+                // topLeft: borderRadius,
+                // bottomLeft: borderRadius,
               ),
             ),
         ),
@@ -198,8 +198,8 @@ class TrimSliderPainter extends CustomPainter {
                   style.edgeWidth + style.borderRadius,
                   size.height + style.lineWidth * 2,
                 ),
-                topRight: borderRadius,
-                bottomRight: borderRadius,
+                // topRight: borderRadius,
+                // bottomRight: borderRadius,
               ),
             ),
           Path()
@@ -211,8 +211,8 @@ class TrimSliderPainter extends CustomPainter {
                   style.borderRadius,
                   size.height,
                 ),
-                topRight: borderRadius,
-                bottomRight: borderRadius,
+                // topRight: borderRadius,
+                // bottomRight: borderRadius,
               ),
             ),
         ),
@@ -244,11 +244,11 @@ class TrimSliderPainter extends CustomPainter {
     paintIndicator(canvas, size);
 
     // LEFT CIRCLE
-    canvas.drawCircle(centerLeft, style.edgesSize, edges);
-    // RIGHT CIRCLE
-    canvas.drawCircle(centerRight, style.edgesSize, edges);
+    // canvas.drawCircle(centerLeft, style.edgesSize, edges);
+    // // RIGHT CIRCLE
+    // canvas.drawCircle(centerRight, style.edgesSize, edges);
 
-    paintIcons(canvas, centerLeft: centerLeft, centerRight: centerRight);
+    // paintIcons(canvas, centerLeft: centerLeft, centerRight: centerRight);
   }
 
   void paintIndicator(Canvas canvas, Size size) {
@@ -277,36 +277,28 @@ class TrimSliderPainter extends CustomPainter {
     required Offset centerLeft,
     required Offset centerRight,
   }) {
-    final halfIconSize = Offset(style.iconSize / 2, style.iconSize / 2);
+    final halfIconSize = style.iconSize / 2;
 
     // LEFT ICON
     if (style.leftIcon != null) {
-      TextPainter leftArrow = TextPainter(textDirection: TextDirection.rtl);
-      leftArrow.text = TextSpan(
-        text: String.fromCharCode(style.leftIcon!.codePoint),
-        style: TextStyle(
-          fontSize: style.iconSize,
-          fontFamily: style.leftIcon!.fontFamily,
-          color: style.iconColor,
-        ),
-      );
-      leftArrow.layout();
-      leftArrow.paint(canvas, centerLeft - halfIconSize);
+      Paint leftIconPaint = Paint()
+        ..color = style.iconColor
+        // Set your desired stroke width
+        ..style =
+            PaintingStyle.fill; // or PaintingStyle.stroke for a stroked circle
+
+      canvas.drawCircle(centerLeft, halfIconSize, leftIconPaint);
     }
 
     // RIGHT ICON
     if (style.rightIcon != null) {
-      TextPainter rightArrow = TextPainter(textDirection: TextDirection.rtl);
-      rightArrow.text = TextSpan(
-        text: String.fromCharCode(style.rightIcon!.codePoint),
-        style: TextStyle(
-          fontSize: style.iconSize,
-          fontFamily: style.rightIcon!.fontFamily,
-          color: style.iconColor,
-        ),
-      );
-      rightArrow.layout();
-      rightArrow.paint(canvas, centerRight - halfIconSize);
+      Paint rightIconPaint = Paint()
+        ..color = style.iconColor
+        // Set your desired stroke width
+        ..style =
+            PaintingStyle.fill; // or PaintingStyle.stroke for a stroked circle
+
+      canvas.drawCircle(centerRight, halfIconSize, rightIconPaint);
     }
   }
 
